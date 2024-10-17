@@ -1,5 +1,9 @@
 package Tree;
 
+import Stack.LinkedListStack;
+import Stack.StackADT;
+
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
 public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
@@ -46,9 +50,71 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
 
     @Override
     public Iterator<T> traverse(TreeTraverseType type) {
-        return null;
+        switch (type){
+            case PRE_ORDER : return preOrderTraverse();
+            case IN_ORDER : return inOrderTraverse();
+//            case POST_ORDER : return postOrderTraverse();
+//            case LEVEL_ORDER : return levelOrderTraverse();
+            default: return null;
+        }
     }
 
+//    private Iterator<T> levelOrderTraverse(){}
+//
+//    private Iterator<T> postOrderTraverse(){}
+
+    private Iterator<T> inOrderTraverse(){
+        final int expectedNodeCount = nodeCount;
+        StackADT<Node> stack = new LinkedListStack();
+        stack.push(root);
+
+        return new Iterator<T>() {
+            Node trav = root;
+            @Override
+            public boolean hasNext() {
+                if(expectedNodeCount != nodeCount) throw new ConcurrentModificationException();
+
+                return root != null && !stack.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                if(expectedNodeCount != nodeCount) throw new ConcurrentModificationException();
+
+                while(trav != null && trav.getLeft() != null){
+                    stack.push(trav.getLeft());
+                    trav = trav.getLeft();
+                }
+                Node node = stack.pop();
+                if(node.getRight() != null){
+                    stack.push(node.getRight());
+                    trav = node.getRight();
+                }
+                return (T) node.getData();
+            }
+        };
+    }
+
+    private Iterator<T> preOrderTraverse(){
+        final int expectedNodeCount = nodeCount;
+        StackADT<Node> stack = new LinkedListStack();
+        stack.push(root);
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                if(expectedNodeCount != nodeCount) throw new ConcurrentModificationException();
+                return root != null && !stack.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                if(expectedNodeCount != nodeCount) throw new ConcurrentModificationException();
+                Node node = stack.pop();
+                if(node.getRight() != null)stack.push(node.getRight());
+                return (T) node.getData();
+            }
+        };
+    }
     //PRIVATE
 
     private int height(Node node) {
