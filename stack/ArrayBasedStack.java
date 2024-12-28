@@ -1,6 +1,6 @@
-package Stack;
+package stack;
 
-import DynamicArray.DynamicArray;
+import dynamicArray.DynamicArray;
 
 import java.util.EmptyStackException;
 import java.util.Iterator;

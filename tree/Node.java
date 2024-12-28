@@ -1,4 +1,4 @@
-package Tree;
+package tree;
 
 class Node<T extends Comparable<T>> {
     private T data;

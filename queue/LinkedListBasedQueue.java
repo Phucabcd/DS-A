@@ -1,7 +1,7 @@
-package Queue;
+package queue;
 
-import LinkedList.DefaultDoublyLinkedList;
-import LinkedList.DoublyLinkedList;
+import linkedList.DefaultDoublyLinkedList;
+import linkedList.DoublyLinkedList;
 
 import java.util.Iterator;
 

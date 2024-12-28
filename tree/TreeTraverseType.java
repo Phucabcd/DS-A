@@ -1,4 +1,4 @@
-package Tree;
+package tree;
 
 public enum TreeTraverseType {
     PRE_ORDER,

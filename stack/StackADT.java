@@ -1,4 +1,4 @@
-package Stack;
+package stack;
 
 public interface StackADT<T> extends  Iterable<T>{
     void push(T element);

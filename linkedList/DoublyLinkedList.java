@@ -1,4 +1,4 @@
-package LinkedList;
+package linkedList;
 
 public interface DoublyLinkedList<T> extends Iterable<T> {
     void clear();

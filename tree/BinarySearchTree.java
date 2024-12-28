@@ -1,7 +1,7 @@
-package Tree;
+package tree;
 
-import Stack.LinkedListStack;
-import Stack.StackADT;
+import stack.LinkedListStack;
+import stack.StackADT;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;

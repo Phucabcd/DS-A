@@ -1,11 +1,10 @@
-package Stack;
+package stack;
 
-import LinkedList.DefaultDoublyLinkedList;
-import LinkedList.DoublyLinkedList;
+import linkedList.DefaultDoublyLinkedList;
+import linkedList.DoublyLinkedList;
 
 import java.util.EmptyStackException;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 public class LinkedListStack<T> implements StackADT<T>{
     private final DoublyLinkedList<T> list = new DefaultDoublyLinkedList<>();

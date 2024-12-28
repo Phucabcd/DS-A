@@ -1,8 +1,7 @@
-package DynamicArray;
+package dynamicArray;
 
 
 import java.util.Iterator;
-import java.util.Scanner;
 
 public class DynamicArray<T> implements Iterable<T> {
 
